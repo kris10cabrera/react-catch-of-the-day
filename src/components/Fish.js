@@ -13,7 +13,7 @@ class Fish extends React.Component {
         <h3 className="fish-name">{name}
         <span className="price">{formatPrice(price)}</span></h3>
         <p>{desc}</p>
-    <button disabled={!isAvailable}>{isAvailable ? 'Add To Order' : 'Sold Out'}</button>
+    <button onClick={() => this.props.addToOrder(this.props.index)} disabled={!isAvailable}>{isAvailable ? 'Add To Order' : 'Sold Out'}</button>
       </li>
     )
   }
@@ -21,5 +21,3 @@ class Fish extends React.Component {
 
 export default Fish;
 
-
-// 3:15 of 16
