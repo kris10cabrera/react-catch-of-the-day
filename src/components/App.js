@@ -10,6 +10,7 @@ class App extends React.Component {
     fishes: {},
     order: {}
   };
+
   addFish = (fish) => {
     // take a copy of the existing state, makes a spread
     const fishes = {...this.state.fishes};
@@ -40,8 +41,12 @@ class App extends React.Component {
           <ul className="fishes">
             {Object.keys(this.state.fishes).map(key => 
             <Fish 
+            // have to pass key as prop and needs to be something other than key, because key is for React
             key={key} 
-            details={this.state.fishes[key]}/>
+            index={key}
+            details={this.state.fishes[key]}
+            addToOrder={this.addToOrder}
+            />
             )}
           </ul>
         </div>
