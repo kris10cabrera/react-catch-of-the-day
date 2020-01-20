@@ -44,6 +44,15 @@ class App extends React.Component {
     this.setState({ fishes });
   };
 
+  updateFish = (key, updatedFish) => {
+    // take copy of current fish
+    const fishes = {...this.state.fishes};
+    // it's not props because we're in the component where the state is living!!!!!!!!
+    // update that state
+    fishes[key] = updatedFish;
+    this.setState({ fishes });
+  }
+
   loadSampleFishes = () => {
     this.setState({fishes: sampleFishes});
   };
@@ -75,7 +84,7 @@ class App extends React.Component {
           </ul>
         </div>
         <Order fishes={this.state.fishes} order={this.state.order} />
-        <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes}/>
+        <Inventory fishes={this.state.fishes} addFish={this.addFish} updateFish={this.updateFish} loadSampleFishes={this.loadSampleFishes}/>
         
       </div>
     );
