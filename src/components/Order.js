@@ -2,6 +2,9 @@ import React from 'react';
 import { formatPrice } from '../helpers';
 
 class Order extends React.Component {
+  renderOrder = (key) => {
+    return <li>{key}</li>;
+  };
   render() {
     const orderIds = Object.keys(this.props.order);
     // like a for loop or a Map, but instead of updated an external variable, it returns a specific subset. we're looking for a tally
@@ -20,7 +23,7 @@ class Order extends React.Component {
         <div className="order-wrap">
           <h2>Order</h2>
           <ul>
-            { orderIds.map(key => <li>{key}</li>) }
+            { orderIds.map(this.renderOrder)}
           </ul>
           
           <div className="total">
@@ -34,4 +37,3 @@ class Order extends React.Component {
 
 export default Order;
 
-// on 10:30 of video 17
