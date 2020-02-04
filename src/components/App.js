@@ -44,6 +44,15 @@ class App extends React.Component {
     this.setState({ fishes });
   };
 
+  deleteFish = (key) => {
+    // take a copy of state. make a spread. 
+    const fishes = {...this.state.fishes};
+    // update the state. remove an item from state! have to set a fish to null for firebase;
+    fishes[key] = null;
+    // update state
+    this.setState({ fishes });
+  }
+
   updateFish = (key, updatedFish) => {
     // take copy of current fish
     const fishes = {...this.state.fishes};
@@ -91,9 +100,8 @@ class App extends React.Component {
             )}
           </ul>
         </div>
-        <Order fishes={this.state.fishes} order={this.state.order} />
-        <Inventory fishes={this.state.fishes} addFish={this.addFish} updateFish={this.updateFish} loadSampleFishes={this.loadSampleFishes}/>
         <Order fishes={this.state.fishes} order={this.state.order} removeFromOrder={this.removeFromOrder}/>
+        <Inventory fishes={this.state.fishes} addFish={this.addFish} updateFish={this.updateFish} deleteFish={this.deleteFish} loadSampleFishes={this.loadSampleFishes}/>
         
       </div>
     );
